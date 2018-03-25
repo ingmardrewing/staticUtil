@@ -1,4 +1,4 @@
-package staticController
+package staticUtil
 
 import (
 	"fmt"
