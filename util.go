@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/ingmardrewing/fs"
+	"github.com/ingmardrewing/staticIntf"
 )
 
 var (
@@ -26,4 +27,10 @@ func GetDate() string {
 func DirExists(path string) bool {
 	exits, _ := fs.PathExists(path)
 	return len(path) > 0 && exits
+}
+
+func MakeSrcSet(p staticIntf.Page) string {
+	return fmt.Sprintf("%s 390w, %s 800w",
+		p.ThumbnailUrl(),
+		p.ImageUrl())
 }
