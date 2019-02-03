@@ -29,8 +29,17 @@ func DirExists(path string) bool {
 	return len(path) > 0 && exits
 }
 
+func MakeMicroSrcSet(p staticIntf.Page) string {
+	if len(p.ThumbnailUrl()) <= 5 {
+		return ""
+	}
+	return fmt.Sprintf("%s 2x", p.ThumbnailUrl())
+}
+
 func MakeSrcSet(p staticIntf.Page) string {
-	return fmt.Sprintf("%s 390w, %s 800w",
-		p.ThumbnailUrl(),
-		p.ImageUrl())
+	if len(p.ImageUrl()) <= 5 ||
+		p.ThumbnailUrl() == p.ImageUrl() {
+		return ""
+	}
+	return fmt.Sprintf("%s 2x", p.ImageUrl())
 }
