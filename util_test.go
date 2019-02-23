@@ -25,7 +25,7 @@ func TestGenerateDatePath(t *testing.T) {
 func TestGetDate(t *testing.T) {
 	mockTimeNow()
 	actual := GetDate()
-	expected := "2018-3-30 12:20:20"
+	expected := "2018-3-30"
 
 	if actual != expected {
 		t.Error("Expected", expected, "but got", actual)
