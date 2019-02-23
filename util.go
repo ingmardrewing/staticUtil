@@ -2,6 +2,7 @@ package staticUtil
 
 import (
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/ingmardrewing/fs"
@@ -20,6 +21,11 @@ func GenerateDatePath() string {
 
 // Generate date and time string
 func GetDate() string {
+	n := timeNow()
+	return fmt.Sprintf("%d-%d-%d", n.Year(), n.Month(), n.Day())
+}
+
+func GetDateTime() string {
 	n := timeNow()
 	return fmt.Sprintf("%d-%d-%d %d:%d:%d", n.Year(), n.Month(), n.Day(), n.Hour(), n.Minute(), n.Second())
 }
@@ -42,4 +48,12 @@ func MakeSrcSet(p staticIntf.Page) string {
 		return ""
 	}
 	return fmt.Sprintf("%s 2x", p.ImageUrl())
+}
+
+func JoinStrings(values []string, separator, delimiter string) string {
+	if len(values) == 0 {
+		return ""
+	}
+	sepAndDel := delimiter + separator + delimiter
+	return delimiter + strings.Join(values, sepAndDel) + delimiter
 }
