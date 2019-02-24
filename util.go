@@ -30,6 +30,11 @@ func GetDateTime() string {
 	return fmt.Sprintf("%d-%d-%d %d:%d:%d", n.Year(), n.Month(), n.Day(), n.Hour(), n.Minute(), n.Second())
 }
 
+func GetDateTimeCompressed() string {
+	n := timeNow()
+	return fmt.Sprintf("%d%d%d%d%d%d", n.Year(), n.Month(), n.Day(), n.Hour(), n.Minute(), n.Second())
+}
+
 func DirExists(path string) bool {
 	exits, _ := fs.PathExists(path)
 	return len(path) > 0 && exits
